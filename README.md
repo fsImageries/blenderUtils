@@ -5,7 +5,7 @@
 Easy to use blender utilities for repetitive tasks.  
   
 If you'd like to see new features please leave a request as Issue or PullRequest.   
-Currently not very active with mail and all.  
+Currently not very active with mail and all but very interested in scripting in blender. 
   
   
 ## Installation
