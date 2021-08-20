@@ -14,7 +14,7 @@
 bl_info = {
     "name": "Blender Utilities",
     "author": "FzudemAA",
-    "description": "Simple addon for repetive and automatable jobs.",
+    "description": "Simple addon for repetitive and automatable jobs.",
     "location": "",
     "warning": "",
     "category": "General",
