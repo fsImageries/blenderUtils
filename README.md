@@ -9,7 +9,7 @@ Currently not very active with mail and all.
   
   
 ## Installation
-#### 1. Download this repo as zip or clone it and archive it as zip.
+#### 1. Download this repo as zip (press the 'code' button in the top right) or clone it and archive it as zip.
 
 #### 2. Open Blender, go to 'Edit->Preferences->Add-ons->Install'.
 
