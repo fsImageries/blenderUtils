@@ -20,4 +20,4 @@ Currently not very active with mail and all.
   
   
 ## Usage
-[Take a look at this one](usage.md)
+[Take a look at this one](USAGE.md)
