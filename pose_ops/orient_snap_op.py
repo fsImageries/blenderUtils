@@ -31,10 +31,13 @@ class Pose_Orient_Snap_OP(bpy.types.Operator):
 
         sel = context.selected_pose_bones
 
+        if sel is None:
+            return False
+
         mode = bpy.context.active_object.mode == "POSE"
         act_bone = context.active_pose_bone in sel
 
-        return (sel is not None and len(sel) > 1 and act_bone and mode)
+        return (len(sel) > 1 and act_bone and mode)
 
     def execute(self, context):
         sel = context.selected_pose_bones
