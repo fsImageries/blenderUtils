@@ -18,7 +18,7 @@ bl_info = {
     "location": "",
     "warning": "",
     "category": "General",
-    "version": (1, 1, 0),
+    "version": (1, 1, 1),
     "blender": (2, 93, 1)
 }
 
