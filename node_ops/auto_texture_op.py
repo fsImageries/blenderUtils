@@ -32,6 +32,7 @@ class AUTO_TEXTURE_NODE_OP(bpy.types.Operator):
     filepath: bpy.props.StringProperty(
         name="Filepath",
         description="Texture filepath",
+        subtype="DIR_PATH",
         default=""
     )
 
