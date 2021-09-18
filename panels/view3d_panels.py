@@ -15,20 +15,43 @@ class VIEW3D_PT_Pose_Tools(bpy.types.Panel):
         layout = self.layout
         ob = context.object
 
-        snap_prop = layout.operator(
+        box = layout.box()
+        row = box.row()
+        snap_prop = row.operator(
             "pose.pose_snap", text="Bone Snap", icon="BONE_DATA")
         snap_prop.pose_snap_translation = ob.pose_snap_translation
         snap_prop.pose_snap_rotation = ob.pose_snap_rotation
         snap_prop.pose_snap_scale = ob.pose_snap_scale
 
-        layout.prop(ob, "pose_snap_translation")
-        layout.prop(ob, "pose_snap_rotation")
-        layout.prop(ob, "pose_snap_scale")
+        row = box.row()
+        row.prop(ob, "pose_snap_translation")
+        row = box.row()
+        row.prop(ob, "pose_snap_rotation")
+        row = box.row()
+        row.prop(ob, "pose_snap_scale")
+
+        layout.separator()
+
+        box = layout.box()
+        row = box.row()
+        pose_chain_prop = row.operator(
+            "pose.bone_chain_constraint", text="Bone Chain Constraint", icon="BONE_DATA")
+        pose_chain_prop.bone_chain_constraint__constraint_type = ob.bone_chain_constraint__constraint_type
+        pose_chain_prop.bone_chain_constraint__target_suffix = ob.bone_chain_constraint__target_suffix
+        pose_chain_prop.bone_chain_constraint__excludes = ob.bone_chain_constraint__excludes
+
+        row = box.row()
+        row.prop(ob, "bone_chain_constraint__constraint_type")
+        row = box.row()
+        row.prop(ob, "bone_chain_constraint__target_suffix")
+        row = box.row()
+        row.prop(ob, "bone_chain_constraint__excludes")
 
 
 def register():
     bpy.utils.register_class(VIEW3D_PT_Pose_Tools)
 
+    # Pose Snap Properties
     bpy.types.Object.pose_snap_translation = bpy.props.BoolProperty(
         name="Translation",
         description="Set translation snap",
@@ -45,6 +68,25 @@ def register():
         default=True
     )
 
+    # Pose Chain Constraint Properties
+    bpy.types.Object.bone_chain_constraint__constraint_type = bpy.props.StringProperty(
+        name="Constraint Type",
+        description="Define which constraint should be applied.",
+        default="COPY_TRANSFORMS"
+    )
+
+    bpy.types.Object.bone_chain_constraint__target_suffix = bpy.props.StringProperty(
+        name="Target Suffix",
+        description="Define which suffix or prefix (doesn't matter) should be searched.",
+        default="TGT"
+    )
+
+    bpy.types.Object.bone_chain_constraint__excludes = bpy.props.StringProperty(
+        name="Exclude",
+        description="Define, comma seperated, joints which can be skipped. Case-sensitive, not word-length sensitive.",
+        default=""
+    )
+
 
 def unregister():
     bpy.utils.unregister_class(VIEW3D_PT_Pose_Tools)
@@ -52,6 +94,10 @@ def unregister():
     del bpy.types.Object.pose_snap_translation
     del bpy.types.Object.pose_snap_rotation
     del bpy.types.Object.pose_snap_scale
+
+    del bpy.types.Object.bone_chain_constraint__constraint_type
+    del bpy.types.Object.bone_chain_constraint__target_suffix
+    del bpy.types.Object.bone_chain_constraint__excludes
 
 
 if __name__ == '__main__':
